@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+
+
+<title>NCAA teams</title>
+
+<script src="site_libs/header-attrs-2.13/header-attrs.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+<style type="text/css">code{white-space: pre;}</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+
+
+
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+details > summary > p:only-child {
+  display: inline;
+}
+pre code {
+  padding: 0;
+}
+</style>
+
+
+<style type="text/css">
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #adb5bd;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script type="text/javascript">
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.tab('show');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+@media print {
+.toc-content {
+  /* see https://github.com/w3c/csswg-drafts/issues/4434 */
+  float: right;
+}
+}
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">football_visualized</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">Home</a>
+</li>
+<li>
+  <a href="teams.html">Teams</a>
+</li>
+<li>
+  <a href="model.html">Model prediction</a>
+</li>
+<li>
+  <a href="contact.html">Contact us</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div id="header">
+
+
+
+<h1 class="title toc-ignore">NCAA teams</h1>
+
+</div>
+
+
+<pre><code>##   [1] &quot;Tennessee State&quot;             &quot;Tennessee-Martin&quot;           
+##   [3] &quot;Eastern Illinois&quot;            &quot;Murray State&quot;               
+##   [5] &quot;Tennessee Tech&quot;              &quot;Southeast Missouri State&quot;   
+##   [7] &quot;Jacksonville State&quot;          &quot;Austin Peay&quot;                
+##   [9] &quot;Duquesne&quot;                    &quot;Bryant&quot;                     
+##  [11] &quot;Long Island University&quot;      &quot;Merrimack&quot;                  
+##  [13] &quot;Charleston Southern&quot;         &quot;Monmouth&quot;                   
+##  [15] &quot;Elon&quot;                        &quot;Richmond&quot;                   
+##  [17] &quot;Stony Brook&quot;                 &quot;Albany&quot;                     
+##  [19] &quot;Delaware&quot;                    &quot;Rhode Island&quot;               
+##  [21] &quot;James Madison&quot;               &quot;William &amp; Mary&quot;             
+##  [23] &quot;Mercer&quot;                      &quot;Chattanooga&quot;                
+##  [25] &quot;Citadel&quot;                     &quot;Samford&quot;                    
+##  [27] &quot;Virginia Military Institute&quot; &quot;Wofford&quot;                    
+##  [29] &quot;Western Carolina&quot;            &quot;East Tenn. St.&quot;             
+##  [31] &quot;Nicholls&quot;                    &quot;Incarnate Word&quot;             
+##  [33] &quot;Southern Illinois&quot;           &quot;Missouri State&quot;             
+##  [35] &quot;Western Illinois&quot;            &quot;Northern Iowa&quot;              
+##  [37] &quot;Eastern Washington&quot;          &quot;Cal Poly&quot;                   
+##  [39] &quot;Southern Utah&quot;               &quot;Idaho&quot;                      
+##  [41] &quot;Idaho State&quot;                 &quot;UC Davis&quot;                   
+##  [43] &quot;Northern Arizona&quot;            &quot;Weber State&quot;                
+##  [45] &quot;Butler&quot;                      &quot;Valparaiso&quot;                 
+##  [47] &quot;Morehead State&quot;              &quot;Davidson&quot;                   
+##  [49] &quot;Presbyterian&quot;                &quot;San Diego&quot;                  
+##  [51] &quot;Northwestern State&quot;          &quot;Lamar&quot;                      
+##  [53] &quot;Lafayette&quot;                   &quot;Bucknell&quot;                   
+##  [55] &quot;Fordham&quot;                     &quot;Holy Cross&quot;                 
+##  [57] &quot;Alcorn State&quot;                &quot;Southern&quot;                   
+##  [59] &quot;Wagner&quot;                      &quot;Sacred Heart&quot;               
+##  [61] &quot;Maine&quot;                       &quot;Kennesaw State&quot;             
+##  [63] &quot;Dixie State&quot;                 &quot;Furman&quot;                     
+##  [65] &quot;SE Louisiana&quot;                &quot;Sam Houston&quot;                
+##  [67] &quot;McNeese&quot;                     &quot;Alabama State&quot;              
+##  [69] &quot;Jackson State&quot;               &quot;Arkansas-Pine Bluff&quot;        
+##  [71] &quot;Grambling&quot;                   &quot;Texas Southern&quot;             
+##  [73] &quot;Illinois State&quot;              &quot;North Dakota State&quot;         
+##  [75] &quot;North Dakota&quot;                &quot;South Dakota&quot;               
+##  [77] &quot;Youngstown State&quot;            &quot;South Dakota State&quot;         
+##  [79] &quot;Drake&quot;                       &quot;Stetson&quot;                    
+##  [81] &quot;Mississippi Valley State&quot;    &quot;Villanova&quot;                  
+##  [83] &quot;Tarleton&quot;                    &quot;Prairie View&quot;               
+##  [85] &quot;Colgate&quot;                     &quot;Lehigh&quot;                     
+##  [87] &quot;South Carolina State&quot;        &quot;Delaware State&quot;             
+##  [89] &quot;New Mexico State&quot;            &quot;Gardner-Webb&quot;               
+##  [91] &quot;Alabama A&amp;M&quot;                 &quot;New Hampshire&quot;              
+##  [93] &quot;Robert Morris&quot;               &quot;Howard&quot;                     
+##  [95] &quot;Alabama&quot;                     &quot;Ohio State&quot;                 
+##  [97] &quot;Kentucky&quot;                    &quot;NC State&quot;                   
+##  [99] &quot;Indiana&quot;                     &quot;Ole Miss&quot;                   
+## [101] &quot;Iowa State&quot;                  &quot;Oregon&quot;                     
+## [103] &quot;North Carolina&quot;              &quot;Texas A&amp;M&quot;                  
+## [105] &quot;Notre Dame&quot;                  &quot;Clemson&quot;                    
+## [107] &quot;Cincinnati&quot;                  &quot;Georgia&quot;                    
+## [109] &quot;Auburn&quot;                      &quot;Northwestern&quot;               
+## [111] &quot;Mississippi State&quot;           &quot;Tulsa&quot;                      
+## [113] &quot;Army&quot;                        &quot;West Virginia&quot;              
+## [115] &quot;Ball State&quot;                  &quot;San Jose St&quot;                
+## [117] &quot;Wake Forest&quot;                 &quot;Wisconsin&quot;                  
+## [119] &quot;Florida&quot;                     &quot;Oklahoma&quot;                   
+## [121] &quot;Miami&quot;                       &quot;Oklahoma State&quot;             
+## [123] &quot;Colorado&quot;                    &quot;Texas&quot;                      
+## [125] &quot;Coastal Carolina&quot;            &quot;Liberty&quot;                    
+## [127] &quot;Louisiana&quot;                   &quot;UT San Antonio&quot;             
+## [129] &quot;Georgia State&quot;               &quot;Western Kentucky&quot;           
+## [131] &quot;Buffalo&quot;                     &quot;Marshall&quot;                   
+## [133] &quot;Hawai&#39;i&quot;                     &quot;Houston&quot;                    
+## [135] &quot;Georgia Southern&quot;            &quot;Louisiana Tech&quot;             
+## [137] &quot;Florida Atlantic&quot;            &quot;Memphis&quot;                    
+## [139] &quot;Nevada&quot;                      &quot;Tulane&quot;                     
+## [141] &quot;BYU&quot;                         &quot;UCF&quot;                        
+## [143] &quot;Appalachian State&quot;           &quot;North Texas&quot;                
+## [145] &quot;Boise State&quot;                 &quot;Tennessee&quot;                  
+## [147] &quot;Air Force&quot;                   &quot;LSU&quot;                        
+## [149] &quot;Missouri&quot;                    &quot;Utah&quot;                       
+## [151] &quot;Washington State&quot;            &quot;Stanford&quot;                   
+## [153] &quot;UCLA&quot;                        &quot;Arizona State&quot;              
+## [155] &quot;Oregon State&quot;                &quot;Illinois&quot;                   
+## [157] &quot;Penn State&quot;                  &quot;Minnesota&quot;                  
+## [159] &quot;UAB&quot;                         &quot;USC&quot;                        
+## [161] &quot;Nebraska&quot;                    &quot;Rutgers&quot;                    
+## [163] &quot;Navy&quot;                        &quot;Virginia Tech&quot;              
+## [165] &quot;Virginia&quot;                    &quot;Maryland&quot;                   
+## [167] &quot;Michigan State&quot;              &quot;Iowa&quot;                       
+## [169] &quot;Wyoming&quot;                     &quot;Fresno State&quot;               
+## [171] &quot;New Mexico&quot;                  &quot;UNLV&quot;                       
+## [173] &quot;San Diego State&quot;             &quot;Central Michigan&quot;           
+## [175] &quot;Toledo&quot;                      &quot;Eastern Michigan&quot;           
+## [177] &quot;Northern Illinois&quot;           &quot;Western Michigan&quot;           
+## [179] &quot;Akron&quot;                       &quot;Baylor&quot;                     
+## [181] &quot;Rice&quot;                        &quot;Troy&quot;                       
+## [183] &quot;Duke&quot;                        &quot;Florida State&quot;              
+## [185] &quot;Louisville&quot;                  &quot;TCU&quot;                        
+## [187] &quot;Vanderbilt&quot;                  &quot;Arkansas&quot;                   
+## [189] &quot;Arizona&quot;                     &quot;UTEP&quot;                       
+## [191] &quot;Southern Miss&quot;               &quot;Georgia Tech&quot;               
+## [193] &quot;Pittsburgh&quot;                  &quot;Charlotte&quot;                  
+## [195] &quot;Boston College&quot;              &quot;Syracuse&quot;                   
+## [197] &quot;Kansas&quot;                      &quot;Texas Tech&quot;                 
+## [199] &quot;Kansas State&quot;                &quot;South Carolina&quot;             
+## [201] &quot;Purdue&quot;                      &quot;Colorado State&quot;             
+## [203] &quot;California&quot;                  &quot;Washington&quot;                 
+## [205] &quot;Bowling Green&quot;               &quot;Arkansas State&quot;             
+## [207] &quot;UL Monroe&quot;                   &quot;South Alabama&quot;              
+## [209] &quot;Utah State&quot;                  &quot;East Carolina&quot;              
+## [211] &quot;SMU&quot;                         &quot;Texas State&quot;                
+## [213] &quot;Michigan&quot;                    &quot;Ohio&quot;                       
+## [215] &quot;Kent State&quot;                  &quot;Miami (OH)&quot;                 
+## [217] &quot;South Florida&quot;               &quot;UMass&quot;                      
+## [219] &quot;Florida International&quot;       &quot;North Alabama&quot;              
+## [221] &quot;Temple&quot;                      &quot;Eastern Kentucky&quot;           
+## [223] &quot;Middle Tennessee&quot;            &quot;Stephen F Austin&quot;           
+## [225] &quot;Abilene Christian&quot;           &quot;Central Arkansas&quot;           
+## [227] &quot;Houston Baptist&quot;             &quot;Campbell&quot;                   
+## [229] &quot;Montana&quot;                     &quot;Portland State&quot;             
+## [231] &quot;North Carolina A&amp;T&quot;          &quot;Montana State&quot;              
+## [233] &quot;Sacramento State&quot;            &quot;Old Dominion&quot;               
+## [235] &quot;Connecticut&quot;                 &quot;Central Connecticut&quot;        
+## [237] &quot;Northern Colorado&quot;           &quot;Hampton&quot;                    
+## [239] &quot;Towson&quot;                      &quot;Florida A&amp;M&quot;                
+## [241] &quot;Bethune-Cookman&quot;             &quot;Morgan State&quot;               
+## [243] &quot;Norfolk State&quot;               &quot;NC Central&quot;                 
+## [245] &quot;Indiana State&quot;               &quot;St Francis (PA)&quot;            
+## [247] &quot;Dayton&quot;                      &quot;Jacksonville&quot;               
+## [249] &quot;Marist&quot;                      &quot;Georgetown&quot;                 
+## [251] &quot;Dartmouth&quot;                   &quot;Brown&quot;                      
+## [253] &quot;Princeton&quot;                   &quot;Penn&quot;                       
+## [255] &quot;Yale&quot;                        &quot;Harvard&quot;                    
+## [257] &quot;Cornell&quot;                     &quot;Columbia&quot;                   
+## [259] &quot;Florida Tech&quot;                &quot;Montana-Western&quot;            
+## [261] &quot;Carroll (MT)&quot;                &quot;Northeastern&quot;               
+## [263] &quot;Hofstra&quot;                     &quot;St. Cloud State&quot;            
+## [265] &quot;Iona&quot;                        &quot;La Salle&quot;                   
+## [267] &quot;Georgetown (KY)&quot;             &quot;St. Mary&#39;s (CA)&quot;            
+## [269] &quot;Siena&quot;                       &quot;Fairfield&quot;                  
+## [271] &quot;St. John&#39;s&quot;                  &quot;Canisius&quot;                   
+## [273] &quot;CS-Northridge&quot;               &quot;Montana State-Northern&quot;</code></pre>
+
+
+
+</div>
+</div>
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open');
+  });
+});
+</script>
+
+<!-- code folding -->
+
+<script>
+$(document).ready(function ()  {
+
+    // temporarily add toc-ignore selector to headers for the consistency with Pandoc
+    $('.unlisted.unnumbered').addClass('toc-ignore')
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_');
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

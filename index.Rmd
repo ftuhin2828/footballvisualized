@@ -1,0 +1,71 @@
+---
+title: "NCAA data visualization"
+output: html_document
+---
+
+```{r echo=FALSE, warning=FALSE, message=FALSE}
+
+library(dplyr)
+library(ggplot2)     
+library(gganimate)   
+
+NCAA <- read.csv("ncaaf_2000_2020.csv")
+NCAA = NCAA %>%
+  select("Team", "Season", "Points_For", "Points_Against", "Spread")
+
+Total_yearly = NCAA %>% 
+  group_by(Team, Season) %>% 
+  summarise(Spread = sum(Spread, na.rm = TRUE))
+
+Total_yearly_cumulative = Total_yearly %>% group_by(Team) %>% mutate(csum = cumsum(Spread))
+
+
+yearly_formatted <- Total_yearly_cumulative %>%
+  group_by(Season) %>% 
+  mutate(rank = rank(-csum),
+         Value_rel = csum/csum[rank==1],
+         Value_lbl = paste0(" ",round(csum))) %>%
+  group_by(Season) %>%
+  filter(rank <=25) %>%
+  ungroup()
+
+staticplot = ggplot(yearly_formatted, aes(rank, group = Team, fill = as.factor(Team), color = as.factor(Team))) +
+  geom_tile(aes(y = csum/2,height = csum, width = 0.7), alpha = 0.8, color = NA) +
+  geom_text(size=7.5, aes(y = 0, label = paste(Team, " ")), vjust = 0.2, hjust = 1) +
+  geom_text(size=7.5, aes(y=csum, label = Value_lbl, hjust=0)) +
+  coord_flip(clip = "off", expand = FALSE) +
+  scale_y_continuous(labels = scales::comma) +
+  scale_x_reverse() +
+  theme(axis.line=element_blank(),
+        axis.text.x=element_blank(),
+        axis.text.y=element_blank(),
+        axis.ticks=element_blank(),
+        axis.title.x=element_blank(),
+        axis.title.y=element_blank(),
+        legend.position="none",
+        panel.background=element_blank(),
+        panel.border=element_blank(),
+        panel.grid.major=element_blank(),
+        panel.grid.minor=element_blank(),
+        #panel.grid.major.x = element_line( size=.1, color="grey" ),
+        #panel.grid.minor.x = element_line( size=.1, color="grey" ),
+        plot.title=element_text(size=25, hjust=0.5, face="bold", colour="darkgreen", vjust=-1),
+        plot.subtitle=element_text(size=25, hjust=0.5, face="bold", color="darkgreen"),
+        plot.caption =element_text(size=20, hjust=0.5, face="bold", color="darkgreen"),
+        plot.background=element_blank(),
+        plot.margin = margin(2,2, 2, 8, "cm"))
+
+
+
+anim = staticplot + transition_states(Season, transition_length = 0.1, state_length = 1) +
+  #view_follow(fixed_x = TRUE)  +
+  labs(title = 'Most dominant team by point differential since 2000 : {closest_state}',
+       subtitle  =  "Top 25 Teams",
+       caption  = "Cumulative point differential | Data Source: ESPN")
+
+ animate(anim, 200, fps = 8,  width = 1200, height = 650, end_pause = 30,
+       renderer = gifski_renderer("gganim.gif"))
+
+
+```
+

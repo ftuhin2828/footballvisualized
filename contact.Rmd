@@ -1,0 +1,16 @@
+---
+title: "Resources"
+output: html_document
+---
+
+Fazlur Rahman
+
+Email: frahman909@gmail.com
+
+Phone no: 706-372-6688
+
+https://www.instagram.com/football_visualized/
+
+https://twitter.com/home
+
+https://www.footballvisualized.com/index.html

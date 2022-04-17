@@ -1,0 +1,14 @@
+name: "football_visualized"
+navbar:
+  title: "football_visualized"
+  left:
+    - text: "Home"
+      href: index.html
+    - text: "Teams"
+      href: teams.html
+    - text: "Model prediction"
+      href: model.html
+    - text: "Contact us"
+      href: contact.html
+      
+output_dir: "docs"

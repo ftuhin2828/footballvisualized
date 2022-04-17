@@ -1,0 +1,13 @@
+---
+title: "Model prediction"
+output: html_document
+---
+
+```{r, echo=FALSE, warning=FALSE, message=FALSE}
+NCAA <- read.csv("ncaaf_2000_2020.csv")
+NCAA = NCAA %>%
+  select("Team", "Season", "Points_For", "Points_Against", "Spread")
+
+summary(NCAA)
+
+```
