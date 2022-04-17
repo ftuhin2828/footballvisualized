@@ -7,7 +7,7 @@ output: html_document
 NCAA <- read.csv("ncaaf_2000_2020.csv")
 NCAA = NCAA %>%
   select("Team", "Season", "Points_For", "Points_Against", "Spread")
-
+str(NCAA)
 summary(NCAA)
 
 ```
