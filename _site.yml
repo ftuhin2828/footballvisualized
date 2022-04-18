@@ -1,7 +1,7 @@
-name: "football_visualized"
+
 navbar:
   title: "football_visualized"
-  left:
+  right:
     - text: "Home"
       href: index.html
     - text: "Teams"
