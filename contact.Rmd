@@ -1,9 +1,14 @@
 ---
-title: "Resources"
+title: "Contact info"
 output: html_document
 ---
 
-Fazlur Rahman
+```{r, echo=FALSE, out.width = '40%'}
+knitr::include_graphics("headshot.png")
+```
+
+
+**Fazlur Rahman, PhD**
 
 Email: frahman909@gmail.com
 
