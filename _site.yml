@@ -1,5 +1,8 @@
 navbar:
-  title: "<img id=\"logo\" style=\"width: 25px;\" src=\"american-football-day.png\" />"
+  title: "<img id=\"logo\" style=\"width: 50px;\" src=\"logo.png\" />"
+  
+  #title: "football visualized" 
+  
   output: html_document
   right:
     - text: "Home"
