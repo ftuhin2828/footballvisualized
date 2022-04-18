@@ -1,6 +1,6 @@
-
 navbar:
   title: "football_visualized"
+  output: html_document
   right:
     - text: "Home"
       href: index.html
