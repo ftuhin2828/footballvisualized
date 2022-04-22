@@ -11,7 +11,7 @@ navbar:
       href: teams.html
     - text: "Model prediction"
       href: model.html
-    - text: "Shiny apps"
+    - text: "Interactive app"
       href: shiny.html
       runtime: shiny
     - text: "Contact us"

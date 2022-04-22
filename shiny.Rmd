@@ -2,6 +2,7 @@
 title: ""
 output: html_document
 runtime: shiny
----
 
-<iframe src=" https://fazlur-rahman.shinyapps.io/NCA_PK_Parameter_estimation/" width="150%" height="600px"></iframe>
+---
+\
+<iframe src=" https://fazlur-rahman.shinyapps.io/NCA_PK_Parameter_estimation/" width="120%" height="600px"></iframe>
