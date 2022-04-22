@@ -1,6 +1,7 @@
 ---
 title: "Contact info"
 output: html_document
+
 ---
 
 ```{r, echo=FALSE, out.width = '40%'}
@@ -19,3 +20,5 @@ https://www.instagram.com/football_visualized/
 https://twitter.com/home
 
 https://www.footballvisualized.com/index.html
+
+

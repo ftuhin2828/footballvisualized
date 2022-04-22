@@ -13,5 +13,9 @@ navbar:
       href: model.html
     - text: "Contact us"
       href: contact.html
+    - text: "Shiny apps"
+      href: shiny.html
+      runtime: shiny
+
       
 output_dir: "docs"
