@@ -1,8 +1,6 @@
 navbar:
   title: "<img id=\"logo\" style=\"width: 80px;\" src=\"logo2.png\" />"
   
-  #title: "football visualized" 
-  
   output: html_document
   right:
     - text: "Home"

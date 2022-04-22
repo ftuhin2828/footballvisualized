@@ -1,11 +1,6 @@
 ---
-title: "Habits"
-output:
-  html_document:
-    toc: true
-    number_sections: true
-    toc_float: true
-      
+title: ""
+output: html_document
 ---
 
 
