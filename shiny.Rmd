@@ -6,4 +6,4 @@ runtime: shiny
 
 ---
 
-<iframe scrolling="no" frameborder="no" src="https://fazlur-rahman.shinyapps.io/NCA_PK_Parameter_estimation/" class="l-screen-inset shaded"></iframe>
+<iframe src="https://fazlur-rahman.shinyapps.io/NCA_PK_Parameter_estimation/" class="l-screen-inset shaded" height="1000px"></iframe>
