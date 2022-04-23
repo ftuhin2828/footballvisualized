@@ -11,6 +11,7 @@ navbar:
       href: model.html
     - text: "Interactive app"
       href: shiny.html
+      css: my.css
       runtime: shiny
     - text: "Contact us"
       href: contact.html
