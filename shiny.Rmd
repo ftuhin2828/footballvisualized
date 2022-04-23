@@ -4,4 +4,5 @@ output: html_document
 runtime: shiny
 
 ---
-<iframe src="https://fazlur-rahman.shinyapps.io/NCA_PK_Parameter_estimation/" layout ="l-screen-inset shaded"></iframe>
+
+<iframe scrolling="no" frameborder="no" src="https://fazlur-rahman.shinyapps.io/NCA_PK_Parameter_estimation/" class="l-screen-inset shaded" style="width:1000px;height: 100vh;"></iframe>
